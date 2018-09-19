@@ -1,11 +1,36 @@
-<!-- <div class="container">
-<section [hidden]='masquerSection'>
-<h1>Application Employé Du Mois</h1>
-<app-bonjour></app-bonjour>
-<app-bonjour-avec-prenom [prenom]="'SubZero'"></app-bonjour-avec-prenom>
-<app-bonjour-les-collegues></app-bonjour-les-collegues>
-</section>
-<app-demo></app-demo>
-</div> -->
+<header>
+    <!-- Entête -->
+    <div class="p-3"></div>
+    <app-bandeau-component></app-bandeau-component>
 
-<app-accueil></app-accueil>
+</header>
+
+<!-- contient la barre de navigation -->
+<app-menu></app-menu>
+
+<hr>
+
+<div id="content">
+    <!-- le composant défini dans la route courante va être inséré à cet endroit -->
+
+  
+
+    <!-- au regard de la configuration précédente, 
+        /accueil va insérer le composant AccueilComponent à cet emplacement   -->
+       
+
+  <!-- au regard de la configuration précédente, 
+        /demo a insérer le composant DemoComponent à cet emplacement -->
+    
+       
+
+    <router-outlet></router-outlet>
+
+</div>
+
+
+<footer>
+     <!-- Pied de page -->
+<div class="p-3"></div>
+
+</footer>

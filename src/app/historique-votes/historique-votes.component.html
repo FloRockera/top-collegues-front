@@ -1,4 +1,6 @@
 
+<div class="container">
+
 <p>
   Ici la liste des historiques des votes !
 </p>
@@ -6,11 +8,10 @@
 
 <section>
     <section *ngFor="let colv of voteTab">
-  
+
+        
       <div class="mt-2">
-  
-    <div class="colv" >
-      <div class="card" style="width: 16rem;">
+      <div class="card" style="width: 18rem;">
           <img class="card-img-left" src= {{colv.coll.photo}} alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">{{colv.coll.pseudo}}</h5>
@@ -22,10 +23,13 @@
               </p>
           </div>
       </div>
-    </div>
+   
 
       <button  type="button" class="btn btn-outline-danger" (click)="delete()">Supprimer</button>
-    </div>
+   </div>
+ 
+
     </section>
   </section>
 
+</div>

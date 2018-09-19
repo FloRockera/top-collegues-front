@@ -4,7 +4,8 @@ import { Collegue, Avis } from '../model';
 import { environment } from '../../environments/environment';
 
 // Environnement URL
-const URL_BACKEND_COLLEGUES = environment.backendUrl;
+const URL_BACKEND_COLLEGUES = environment.backendUrl_Collegues;
+const URL_BACKEND_ACCUEIL = environment.backendUrl_Accueil;
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class CollegueService {
   listerCollegues(): Promise<Collegue[]> {
     // récupérer la liste des collègues côté serveur
     return this._http
-      .get(URL_BACKEND_COLLEGUES)
+      .get(URL_BACKEND_ACCUEIL)
       .toPromise()
       .then((data: any[]) =>
         data.map(collegueServeur =>
@@ -34,7 +35,7 @@ export class CollegueService {
 
     return this._http
       .patch(
-        `${URL_BACKEND_COLLEGUES}/${unCollegue.pseudo}`,
+        `${URL_BACKEND_ACCUEIL}/${unCollegue.pseudo}`,
 
         // corps de la requête
         {
