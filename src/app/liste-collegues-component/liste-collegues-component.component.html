@@ -1,23 +1,28 @@
 <div class="container">
 
 
-<button  type="button" class="btn btn-info">Rafraichir la liste</button>
-<section>
+  <button type="button" class="btn btn-info">Rafraichir la liste</button>
+  <section>
 
-  <section *ngFor="let col of colleguesTab">
+    <section *ngIf="err">
+      <label class="red-text">Problème d'accès au backend : {{err}}</label>
 
-    <div class="mt-4">
+
+    </section>
+
+    <section *ngFor="let col of colleguesTab">
+
+      <div class="mt-4">
         <div class="col">
-        <app-collegue-component [collegue]="col"></app-collegue-component>
+          <app-collegue-component [collegue]="col"></app-collegue-component>
         </div>
 
-    </div>
+      </div>
+
+    </section>
 
 
   </section>
-
-
-</section>
 
 
 </div>

@@ -13,6 +13,7 @@ import { CollegueComponentComponent } from './collegue-component/collegue-compon
 import { ListeColleguesComponentComponent } from './liste-collegues-component/liste-collegues-component.component';
 import { HistoriqueVotesComponent } from './historique-votes/historique-votes.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AccueilComponent } from './accueil/accueil.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     AvisComponentComponent,
     CollegueComponentComponent,
     ListeColleguesComponentComponent,
-    HistoriqueVotesComponent
+    HistoriqueVotesComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,

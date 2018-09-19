@@ -1,6 +1,8 @@
 import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { Collegue, Avis } from '../model';
 import { CollegueService } from '../services/collegue.service';
+import { IfStmt } from '@angular/compiler';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-collegue-component',
@@ -8,30 +10,27 @@ import { CollegueService } from '../services/collegue.service';
   styleUrls: ['./collegue-component.component.css']
 })
 export class CollegueComponentComponent implements OnInit {
-  @Input() collegue:Collegue;
-  @Input() CollegueService;
+  @Input()
+  collegue: Collegue;
 
-  constructor() {
-   
+  errMsg: string;
+
+  constructor(private _colSrv: CollegueService) {}
+
+  avisRecu: string;
+
+  traiter(avis: Avis) {
+    this._colSrv
+      .donnerUnAvis(this.collegue, avis)
+      .then(colServeur => (this.collegue = colServeur))
+      .catch((errServeur: HttpErrorResponse) => {
+        if (errServeur.error.message) {
+          this.errMsg = errServeur.error.message;
+        } else {
+          this.errMsg = 'Erreur technique côté serveur';
+        }
+      });
   }
 
-  avisRecu:string;
-
-  traiter($event:Avis){
-    //console.log('gfff', $event)
-    if ($event == Avis.AIMER)
-    this.avisRecu = "Vous avez cliqué sur 'J'aime'";
-    if  ($event == Avis.DETESTER)
-    this.avisRecu = "Vous avez cliqué sur 'Je déteste'";
-
-    //injecter service et appeler méthode donner avis
-    donnerUnAvis();
-
-  }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
-
-
