@@ -8,7 +8,8 @@ export const environment = {
 
   // ajout d'une URL backend en mode développement
   backendUrl_Collegues: 'http://localhost:8080/collegues',
-  backendUrl_Accueil: 'http://localhost:8080/accueil'
+  backendUrl_Accueil: 'http://localhost:8080/accueil',
+  backendUrl_Formulaire: 'http://localhost:8080/formulaire'
 
 };
 

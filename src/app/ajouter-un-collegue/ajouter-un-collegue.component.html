@@ -1,5 +1,5 @@
 
-<form (ngSubmit)="submit(monForm.value)" #monForm="ngForm">
+<form #monForm="ngForm">
 
   <div class="form-group">
     <label for="champmatricule">Matricule</label>
@@ -22,7 +22,7 @@
 
   <div class="form-group">
     <label for="champpseudo">URL image</label>
-    <input type="text" class="form-control" placeholder="Entrez l'URL de votre image" name="urlimage">
+    <input type="text"  [(ngModel)]="formulaire.urlimage" class="form-control" placeholder="Entrez l'URL de votre image" name="urlimage">
   </div>
 
   <button type="submit" class="btn btn-outline-info" (click)="clicAjouter()">Ajouter</button>

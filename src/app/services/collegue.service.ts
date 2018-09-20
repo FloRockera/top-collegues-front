@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Collegue, Avis } from '../model';
+import { Collegue, Avis, Formulaire } from '../model';
 import { environment } from '../../environments/environment';
 
 // Environnement URL
 const URL_BACKEND_COLLEGUES = environment.backendUrl_Collegues;
 const URL_BACKEND_ACCUEIL = environment.backendUrl_Accueil;
+const URL_BACKEND_FORMULAIRE = environment.backendUrl_Formulaire
 
 @Injectable({
   providedIn: 'root'
@@ -50,4 +51,27 @@ export class CollegueService {
         Collegue.fromCollegueServeur(collegueServeur)
       );
   }
-}
+
+  inscrireCollegue(formulaire:Formulaire) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this._http
+    .post(
+      `${URL_BACKEND_FORMULAIRE}`,
+
+      // corps de la requête
+      formulaire,
+
+      // options de la requête HTTP
+        httpOptions
+      )
+      .toPromise();
+  }
+
+    // ???
+   // console.log('je suis dans service', matricule, pseudo, urlimage)
+  }
+
