@@ -14,12 +14,17 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNonTrouveeComponent } from './page-non-trouvee/page-non-trouvee.component';
+import { AjouterUnCollegueComponent } from './ajouter-un-collegue/ajouter-un-collegue.component';
+import { FormsModule } from '@angular/forms';
+
 
 const appRoutes: Routes = [
 
   { path: 'accueil', component: AccueilComponent }, // /page1 affiche le composant A
 
   { path: 'demo', component: DemoComponent }, // /page2 affiche le composant B
+
+  { path: 'formulaire', component: AjouterUnCollegueComponent }, // /page2 affiche le composant B
 
   { path: '',   redirectTo: '/accueil', pathMatch: 'full' }, // redirige vers la route page1 par défaut
 
@@ -38,10 +43,12 @@ const appRoutes: Routes = [
     HistoriqueVotesComponent,
     AccueilComponent,
     MenuComponent,
-    PageNonTrouveeComponent
+    PageNonTrouveeComponent,
+    AjouterUnCollegueComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
     RouterModule.forRoot(appRoutes)

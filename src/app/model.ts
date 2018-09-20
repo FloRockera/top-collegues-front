@@ -22,3 +22,11 @@ export enum Avis {
     coll: Collegue;
     avis: Avis;
   }
+
+  // Création d'une structure formulaire
+  export class Formulaire{
+    matricule : String
+    pseudo : String
+    urlimage: String
+  }
+  
