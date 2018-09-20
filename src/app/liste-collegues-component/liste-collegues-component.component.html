@@ -1,7 +1,11 @@
 <div class="container">
 
+  <!-- <a type="button" class="btn btn-info" href="javascript:window.location.reload()">Rafraichir la liste</a> -->
+  
+  <button  type="button" class="btn btn-info" (click)="raffraichir()">Rafraichir la liste</button>
 
-  <button type="button" class="btn btn-info">Rafraichir la liste</button>
+  <button type="submit" class="btn btn-outline-info" routerLink="/formulaire">Ajouter un collègue</button>
+
   <section>
 
     <section *ngIf="err">

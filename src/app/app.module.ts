@@ -3,9 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { BonjourComponent } from './bonjour/bonjour.component';
-import { BonjourAvecPrenomComponent } from './bonjour-avec-prenom/bonjour-avec-prenom.component';
-import { BonjourLesColleguesComponent } from './bonjour-les-collegues/bonjour-les-collegues.component';
 import { DemoComponent } from './demo/demo.component';
 import { BandeauComponentComponent } from './bandeau-component/bandeau-component.component';
 import { AvisComponentComponent } from './avis-component/avis-component.component';
@@ -14,26 +11,43 @@ import { ListeColleguesComponentComponent } from './liste-collegues-component/li
 import { HistoriqueVotesComponent } from './historique-votes/historique-votes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AccueilComponent } from './accueil/accueil.component';
+import { MenuComponent } from './menu/menu.component';
+import { RouterModule, Routes } from '@angular/router';
+import { PageNonTrouveeComponent } from './page-non-trouvee/page-non-trouvee.component';
+import { AjouterUnCollegueComponent } from './ajouter-un-collegue/ajouter-un-collegue.component';
+import { FormsModule } from '@angular/forms';
+
+
+const appRoutes: Routes = [
+
+  { path: 'accueil', component: AccueilComponent }, // /page1 affiche le composant A
+  { path: 'demo', component: DemoComponent }, // /page2 affiche le composant B
+  { path: 'formulaire', component: AjouterUnCollegueComponent }, // /page2 affiche le composant B
+  { path: '',   redirectTo: '/accueil', pathMatch: 'full' }, // redirige vers la route page1 par défaut
+  { path: '**',  component: PageNonTrouveeComponent } // page non trouvée
+];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BonjourComponent,
-    BonjourAvecPrenomComponent,
-    BonjourLesColleguesComponent,
     DemoComponent,
     BandeauComponentComponent,
     AvisComponentComponent,
     CollegueComponentComponent,
     ListeColleguesComponentComponent,
     HistoriqueVotesComponent,
-    AccueilComponent
+    AccueilComponent,
+    MenuComponent,
+    PageNonTrouveeComponent,
+    AjouterUnCollegueComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     MDBBootstrapModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

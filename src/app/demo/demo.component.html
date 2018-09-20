@@ -1,49 +1,29 @@
-
 <div class="container">
 
 
 
-<h2 class="text-center">Page de démonstration des composants de l'application</h2>
-
-
-<hr>
-
-        <app-bandeau-component></app-bandeau-component>
-            
-
- <!-- 
-<div class="row">
-    <app-collegue-component [collegue]="colFictif" (avis)="traiter($event)"></app-collegue-component>
-        <div class="col-md-1"></div>    
-    <app-collegue-component [collegue]="colFictif" (avis)="traiter($event)"></app-collegue-component>
-        <div class="col-md-1"></div>      
-    <app-collegue-component [collegue]="colFictif" (avis)="traiter($event)"></app-collegue-component>
-    <div class="col-md-1"></div>  
-</div> -->
-
-<hr>
-
-        <div class="row">
-
-            <span class="border">
-            <div class="col-sm-8">
-            <h3 class="font-weight-light text-info">Liste des collègues</h3>
-            <app-liste-collegues-component [colleguesTab]="collegues"></app-liste-collegues-component>
-            </div>
-            </span>
-
-                {{avisRecu}}
-
-            
-
-            <span class="border">
-            <div class="col bg-light text-dark">
-            <h3 class="font-weight-light text-info">Historique des votes</h3>
-            <app-historique-votes></app-historique-votes>
-            </div>
-        
-            </span>
-
-        </div>
+    <h2 class="text-center">Page de démonstration des composants de l'application</h2>
     
-</div>
+    
+    <hr>
+    
+    <div class="row">
+    
+            <div class="col-7">
+              <div class="border">
+                <h3 class="font-weight-light text-info">Liste des collègues</h3>
+                <app-liste-collegues-component></app-liste-collegues-component>
+              </div>
+            </div>
+          
+          
+            <div class="col-5">
+              <div class="border">
+                <div class="col bg-light text-dark">
+                  <h3 class="font-weight-light text-info">Historique des votes</h3>
+                  <app-historique-votes></app-historique-votes>
+                </div>
+              </div>
+            </div>
+          
+          </div>

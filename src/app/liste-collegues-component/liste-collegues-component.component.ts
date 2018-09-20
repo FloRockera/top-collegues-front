@@ -17,10 +17,14 @@ export class ListeColleguesComponentComponent implements OnInit {
   // on va communiquer avec le service
   constructor(private _colSrv: CollegueService) {}
 
+
+   
+
   ngOnInit() {
     // on passe une promesse avec then :
     // le tableau de collègues récupéré dans le service va alimenter
     // le tableau de collègues du composant
+
     this._colSrv
       .listerCollegues()
       .then(tabCollServ => (this.colleguesTab = tabCollServ))
@@ -31,5 +35,6 @@ export class ListeColleguesComponentComponent implements OnInit {
           this.err = 'Erreur technique côté serveur';
         }
       });
+    }
+ 
   }
-}
