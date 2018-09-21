@@ -11,6 +11,7 @@ export class ListeColleguesComponentComponent implements OnInit {
   // on récupère le tableau de collègues du composant
   @Input()
   colleguesTab: Collegue[];
+  // colleguesTab: Observable<Collegue[]>;
 
   err: string;
 
@@ -18,14 +19,26 @@ export class ListeColleguesComponentComponent implements OnInit {
   constructor(private _colSrv: CollegueService) {}
 
 
-   
-
   ngOnInit() {
     // on passe une promesse avec then :
     // le tableau de collègues récupéré dans le service va alimenter
     // le tableau de collègues du composant
 
-    this._colSrv
+    this._colSrv.listerCollegues()
+    .subscribe(
+      tableauCols => this.colleguesTab = tableauCols,
+      errServeur => {
+        if (errServeur.code && errServeur.message) {
+          this.err = errServeur.message;
+        } else {
+          this.err = 'Erreur technique côté serveur'; 
+      }
+    }
+    );
+  }
+
+//a supprimer
+/*
       .listerCollegues()
       .then(tabCollServ => (this.colleguesTab = tabCollServ))
       .catch(errServeur => {
@@ -36,5 +49,6 @@ export class ListeColleguesComponentComponent implements OnInit {
         }
       });
     }
- 
-  }
+*/
+
+}

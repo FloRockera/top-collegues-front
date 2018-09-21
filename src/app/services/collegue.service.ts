@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Collegue, Avis, Formulaire } from '../model';
 import { environment } from '../../environments/environment';
+import { Observable, Subject } from 'rxjs';
+// operateur map
+import { map, filter } from 'rxjs/operators';
 
 // Environnement URL
 const URL_BACKEND_COLLEGUES = environment.backendUrl_Collegues;
@@ -12,21 +15,36 @@ const URL_BACKEND_FORMULAIRE = environment.backendUrl_Formulaire
   providedIn: 'root'
 })
 export class CollegueService {
+
+  // on crée une instance de subject (ne stocke aucune valeur, en temps réel)
+  private _superBus = new Subject<string>();
+
+  // on écrit un getter
+  get superBus() : Observable<string>{
+    return this._superBus.asObservable();
+  }
+
   constructor(private _http: HttpClient) {}
 
-  listerCollegues(): Promise<Collegue[]> {
+
+  listerCollegues(): Observable<Collegue[]> {
     // récupérer la liste des collègues côté serveur
     return this._http
       .get(URL_BACKEND_ACCUEIL)
-      .toPromise()
-      .then((data: any[]) =>
-        data.map(collegueServeur =>
-          Collegue.fromCollegueServeur(collegueServeur)
-        )
+      .pipe(
+      map((data: any[]) =>
+      data.map(collegueServeur =>
+        Collegue.fromCollegueServeur(collegueServeur)
+        ))
       );
   }
 
   donnerUnAvis(unCollegue: Collegue, avis: Avis): Promise<Collegue> {
+
+    // .next pour transmettre l'évènement
+    this._superBus.next('Super : ${unCollegue.pseudo} - ${avis}');
+
+
     // TODO Aimer ou Détester un collègue côté serveur
     const httpOptions = {
       headers: new HttpHeaders({

@@ -16,6 +16,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNonTrouveeComponent } from './page-non-trouvee/page-non-trouvee.component';
 import { AjouterUnCollegueComponent } from './ajouter-un-collegue/ajouter-un-collegue.component';
 import { FormsModule } from '@angular/forms';
+import { ScorePipe } from './score.pipe';
+import { PseudoPipe } from './pseudo.pipe';
 
 
 const appRoutes: Routes = [
@@ -40,7 +42,9 @@ const appRoutes: Routes = [
     AccueilComponent,
     MenuComponent,
     PageNonTrouveeComponent,
-    AjouterUnCollegueComponent
+    AjouterUnCollegueComponent,
+    ScorePipe,
+    PseudoPipe
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,26 @@
 <div class="container">
 
+  <div class = "row">
+  <div class="col-10">
+  <!-- bouton pour rafraichir la liste de collègues -->
   <!-- <a type="button" class="btn btn-info" href="javascript:window.location.reload()">Rafraichir la liste</a> -->
-  
   <button  type="button" class="btn btn-info" (click)="raffraichir()">Rafraichir la liste</button>
 
+  <!-- bouton vers le formulaire d'ajout d'un collègue -->
   <button type="submit" class="btn btn-outline-info" routerLink="/formulaire">Ajouter un collègue</button>
 
+<!-- barre de navigation pour rechercher un collègue par pseudo-->
+  <nav class="navbar navbar-light bg-light">
+    <form class="form-inline" name="filtrePseudo" >
+      <label>Filtrer par pseudo</label>
+      <input name="search" [(ngModel)]="searchText" class="form-control mr-sm-2" type="text" placeholder="Rechercher" maxlength="40">
+    </form>
+  </nav>
+</div>
+
+
+<div class = "row">
+  <div class="col-10">
   <section>
 
     <section *ngIf="err">
@@ -14,7 +29,7 @@
 
     </section>
 
-    <section *ngFor="let col of colleguesTab">
+    <section *ngFor="let col of colleguesTab | pseudo : searchText">
 
       <div class="mt-4">
         <div class="col">
@@ -27,6 +42,8 @@
 
 
   </section>
+</div>
+</div>
 
 
 </div>
