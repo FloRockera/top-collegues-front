@@ -22,8 +22,9 @@ export class CollegueComponentComponent implements OnInit {
   traiter(avis: Avis) {
     this._colSrv
       .donnerUnAvis(this.collegue, avis)
-      .then(colServeur => (this.collegue = colServeur))
-      .catch((errServeur: HttpErrorResponse) => {
+      .subscribe(
+        colServeur => this.collegue = colServeur,
+        errServeur => {
         if (errServeur.error.message) {
           this.errMsg = errServeur.error.message;
         } else {

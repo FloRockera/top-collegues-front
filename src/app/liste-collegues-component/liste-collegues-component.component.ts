@@ -19,6 +19,10 @@ export class ListeColleguesComponentComponent implements OnInit {
   constructor(private _colSrv: CollegueService) {}
 
 
+
+
+
+  
   ngOnInit() {
     // on passe une promesse avec then :
     // le tableau de collègues récupéré dans le service va alimenter

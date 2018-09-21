@@ -31,15 +31,17 @@ export class CollegueService {
     // récupérer la liste des collègues côté serveur
     return this._http
       .get(URL_BACKEND_ACCUEIL)
+
       .pipe(
       map((data: any[]) =>
+
       data.map(collegueServeur =>
         Collegue.fromCollegueServeur(collegueServeur)
         ))
       );
   }
 
-  donnerUnAvis(unCollegue: Collegue, avis: Avis): Promise<Collegue> {
+  donnerUnAvis(unCollegue: Collegue, avis: Avis): Observable<Collegue> {
 
     // .next pour transmettre l'évènement
     this._superBus.next('Super : ${unCollegue.pseudo} - ${avis}');
@@ -64,9 +66,10 @@ export class CollegueService {
         // options de la requête HTTP
         httpOptions
       )
-      .toPromise()
-      .then((collegueServeur: any) =>
+      .pipe(
+        map((collegueServeur: any) =>
         Collegue.fromCollegueServeur(collegueServeur)
+        )
       );
   }
 

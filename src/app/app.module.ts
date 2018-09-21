@@ -18,6 +18,7 @@ import { AjouterUnCollegueComponent } from './ajouter-un-collegue/ajouter-un-col
 import { FormsModule } from '@angular/forms';
 import { ScorePipe } from './score.pipe';
 import { PseudoPipe } from './pseudo.pipe';
+import { VotreDernierAvisComponent } from './votre-dernier-avis/votre-dernier-avis.component';
 
 
 const appRoutes: Routes = [
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     PageNonTrouveeComponent,
     AjouterUnCollegueComponent,
     ScorePipe,
-    PseudoPipe
+    PseudoPipe,
+    VotreDernierAvisComponent
   ],
   imports: [
     BrowserModule,
