@@ -14,6 +14,7 @@ export class ListeColleguesComponentComponent implements OnInit {
   // colleguesTab: Observable<Collegue[]>;
 
   err: string;
+  searchText: string;
 
   // on va communiquer avec le service
   constructor(private _colSrv: CollegueService) {}
