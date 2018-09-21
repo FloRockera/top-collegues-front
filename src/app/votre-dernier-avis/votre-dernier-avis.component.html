@@ -1,20 +1,18 @@
 
 
 <div class="mt-2">
-    <div class="card-body text-center text-muted">
-     
-        <div class="card-body">
-     
-          <p class="card-text">
-          
-              <ng-container *ngIf="colv.avis == 'AIMER'" > Vous avez aimé {{colv.coll.pseudo | uppercase}}  💖</ng-container>
-              <ng-container *ngIf ="colv.avis == 'DETESTER'" > Vous avez détesté {{colv.coll.pseudo | uppercase}} 💔</ng-container>
-              <ng-container *ngIf ="colv.avis == null" > Aucun vote pour le moment </ng-container>
-            </p>
 
+        <div class="card-body text-center text-secondary">
+     
+            <div class="card-body">
+     
+                    {{msg}}
+                    
+
+            </div>
         </div>
-    </div>
-    
+
+
   </div>
  
 

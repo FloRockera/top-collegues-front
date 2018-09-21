@@ -4,7 +4,7 @@ import { Collegue, Avis, Formulaire } from '../model';
 import { environment } from '../../environments/environment';
 import { Observable, Subject } from 'rxjs';
 // operateur map
-import { map, filter } from 'rxjs/operators';
+import { map, filter, tap } from 'rxjs/operators';
 
 // Environnement URL
 const URL_BACKEND_COLLEGUES = environment.backendUrl_Collegues;
@@ -69,9 +69,14 @@ export class CollegueService {
       .pipe(
         map((collegueServeur: any) =>
         Collegue.fromCollegueServeur(collegueServeur)
+        ),
+        tap(collegue => {
+          (this._superBus.next(avis === Avis.AIMER ? `J'aime ${unCollegue.pseudo}`: `Je déteste ${unCollegue.pseudo}`)
+        )})
         )
-      );
+        ;
   }
+
 
   inscrireCollegue(formulaire:Formulaire) {
     const httpOptions = {
