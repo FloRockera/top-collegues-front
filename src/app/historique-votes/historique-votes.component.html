@@ -1,4 +1,4 @@
-<div class="container">
+
 
   <p>
     Ici la liste des historiques des votes !
@@ -15,9 +15,9 @@
             <div class="card-body">
               <h5 class="card-title">{{colv.coll.pseudo | uppercase}}</h5>
               <p class="card-text">
-                
-                  <ng-container *ngIf="colv.avis == AIMER" > Collègue adoré 💖</ng-container>
-                  <ng-container *ngIf ="colv.avis == DETESTER" > Collègue détesté 💔</ng-container>
+              
+                  <ng-container *ngIf="colv.avis == 'AIMER'" > {{colv.coll.pseudo | uppercase}} est un collègue adoré 💖</ng-container>
+                  <ng-container *ngIf ="colv.avis == 'DETESTER'" > {{colv.coll.pseudo | uppercase}} est un collègue détesté 💔</ng-container>
   
                 </p>
             </div>
@@ -31,4 +31,3 @@
       </section>
     </section>
   
-  </div>
